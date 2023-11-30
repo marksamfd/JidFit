@@ -1,118 +1,336 @@
-USE [master]
+CREATE DATABASE jidfit
+USE [jidfit]
 GO
-
-/****** Object:  Database [jidfit]    Script Date: 11/26/2023 2:24:06 PM ******/
-CREATE DATABASE [jidfit]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'jidfit', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\jidfit.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'jidfit_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\jidfit_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
- WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+/****** Object:  Table [dbo].[assign_plate]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [jidfit].[dbo].[sp_fulltext_database] @action = 'enable'
-end
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET ANSI_NULL_DEFAULT OFF 
+CREATE TABLE [dbo].[assign_plate](
+	[plate_name] [varchar](50) NOT NULL,
+	[user_email] [varchar](50) NOT NULL,
+	[meal_type] [int] NOT NULL,
+	[day] [int] NOT NULL,
+	[serving_amount] [int] NULL,
+ CONSTRAINT [PK_assign_plate] PRIMARY KEY CLUSTERED 
+(
+	[plate_name] ASC,
+	[user_email] ASC,
+	[meal_type] ASC,
+	[day] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET ANSI_NULLS OFF 
+/****** Object:  Table [dbo].[assigned_exercise]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET ANSI_PADDING OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET ANSI_WARNINGS OFF 
+CREATE TABLE [dbo].[assigned_exercise](
+	[user_email] [varchar](50) NOT NULL,
+	[exercise_name] [varchar](50) NOT NULL,
+	[day] [int] NOT NULL,
+	[set_count] [int] NULL,
+	[per_set_count] [int] NULL,
+ CONSTRAINT [PK_assigend_exercise] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC,
+	[exercise_name] ASC,
+	[day] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET ARITHABORT OFF 
+/****** Object:  Table [dbo].[ate_plate]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET AUTO_CLOSE OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET AUTO_SHRINK OFF 
+CREATE TABLE [dbo].[ate_plate](
+	[user_email] [varchar](50) NOT NULL,
+	[plate_name] [varchar](50) NOT NULL,
+	[time_ate] [datetime] NOT NULL,
+	[serving] [int] NULL,
+	[serving_unit] [int] NULL,
+ CONSTRAINT [PK_ate_plate] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC,
+	[plate_name] ASC,
+	[time_ate] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET AUTO_UPDATE_STATISTICS ON 
+/****** Object:  Table [dbo].[coach_or_nut]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET CURSOR_CLOSE_ON_COMMIT OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET CURSOR_DEFAULT  GLOBAL 
+CREATE TABLE [dbo].[coach_or_nut](
+	[coach_email] [varchar](50) NOT NULL,
+	[coach_name] [varchar](50) NULL,
+	[password] [varchar](50) NULL,
+	[role] [bit] NULL,
+ CONSTRAINT [PK_coach_or_nut] PRIMARY KEY CLUSTERED 
+(
+	[coach_email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET CONCAT_NULL_YIELDS_NULL OFF 
+/****** Object:  Table [dbo].[did_exercise]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET NUMERIC_ROUNDABORT OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET QUOTED_IDENTIFIER OFF 
+CREATE TABLE [dbo].[did_exercise](
+	[user_email] [varchar](50) NOT NULL,
+	[exercise_name] [varchar](50) NOT NULL,
+	[time_did] [datetime] NOT NULL,
+	[did_count] [int] NOT NULL,
+ CONSTRAINT [PK_did_exercise] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC,
+	[exercise_name] ASC,
+	[time_did] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET RECURSIVE_TRIGGERS OFF 
+/****** Object:  Table [dbo].[exercise]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET  DISABLE_BROKER 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+CREATE TABLE [dbo].[exercise](
+	[exercise_name] [varchar](50) NOT NULL,
+	[target_muscle] [varchar](50) NULL,
+	[illust_link] [varchar](50) NULL,
+ CONSTRAINT [PK_exercise] PRIMARY KEY CLUSTERED 
+(
+	[exercise_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET DATE_CORRELATION_OPTIMIZATION OFF 
+/****** Object:  Table [dbo].[has_problems]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET TRUSTWORTHY OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+CREATE TABLE [dbo].[has_problems](
+	[problem_name] [varchar](50) NOT NULL,
+	[user_email] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_has_problems] PRIMARY KEY CLUSTERED 
+(
+	[problem_name] ASC,
+	[user_email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET PARAMETERIZATION SIMPLE 
+/****** Object:  Table [dbo].[notification]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET READ_COMMITTED_SNAPSHOT OFF 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET HONOR_BROKER_PRIORITY OFF 
+CREATE TABLE [dbo].[notification](
+	[user_email] [varchar](50) NOT NULL,
+	[time] [time](7) NOT NULL,
+	[title] [varchar](50) NULL,
+	[body] [text] NULL,
+	[unread] [bit] NULL,
+ CONSTRAINT [PK_notification] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC,
+	[time] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET RECOVERY SIMPLE 
+/****** Object:  Table [dbo].[nut_achievement]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET  MULTI_USER 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET PAGE_VERIFY CHECKSUM  
+CREATE TABLE [dbo].[nut_achievement](
+	[date_achieved] [date] NOT NULL,
+	[coach_email] [varchar](50) NOT NULL,
+	[url] [varchar](50) NULL,
+	[type] [varchar](50) NULL,
+	[describtion] [text] NULL,
+ CONSTRAINT [PK_nut_achievement] PRIMARY KEY CLUSTERED 
+(
+	[date_achieved] ASC,
+	[coach_email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET DB_CHAINING OFF 
+/****** Object:  Table [dbo].[payment]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+CREATE TABLE [dbo].[payment](
+	[user_email] [varchar](50) NOT NULL,
+	[coach_email] [varchar](50) NOT NULL,
+	[day] [date] NOT NULL,
+ CONSTRAINT [PK_payment] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC,
+	[coach_email] ASC,
+	[day] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET DELAYED_DURABILITY = DISABLED 
+/****** Object:  Table [dbo].[plates]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+SET QUOTED_IDENTIFIER ON
 GO
-
-ALTER DATABASE [jidfit] SET QUERY_STORE = ON
+CREATE TABLE [dbo].[plates](
+	[plate_name] [varchar](50) NOT NULL,
+	[amount] [int] NULL,
+	[unit] [varchar](50) NULL,
+	[protien] [decimal](3, 2) NULL,
+	[fat] [decimal](3, 2) NULL,
+	[carbs] [decimal](3, 2) NULL,
+	[calories] [decimal](3, 2) NULL,
+ CONSTRAINT [PK_plates] PRIMARY KEY CLUSTERED 
+(
+	[plate_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-
-ALTER DATABASE [jidfit] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+/****** Object:  Table [dbo].[problems]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
 GO
-
-ALTER DATABASE [jidfit] SET  READ_WRITE 
+SET QUOTED_IDENTIFIER ON
 GO
-
+CREATE TABLE [dbo].[problems](
+	[name] [varchar](50) NOT NULL,
+	[type] [int] NULL,
+ CONSTRAINT [PK_problems] PRIMARY KEY CLUSTERED 
+(
+	[name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[reports]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[reports](
+	[title] [varchar](50) NOT NULL,
+	[date_created] [datetime] NOT NULL,
+	[type] [int] NULL,
+	[report_content] [text] NULL,
+	[action] [int] NULL,
+	[user_email] [varchar](50) NULL,
+	[coach_email] [varchar](50) NULL,
+ CONSTRAINT [PK_reports] PRIMARY KEY CLUSTERED 
+(
+	[title] ASC,
+	[date_created] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[users]    Script Date: 11/26/2023 3:59:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[users](
+	[user_email] [varchar](50) NOT NULL,
+	[weight] [decimal](3, 2) NULL,
+	[birthdate] [date] NULL,
+	[user_name] [varchar](50) NULL,
+	[gender] [bit] NULL,
+	[target] [int] NULL,
+	[password] [varchar](50) NULL,
+	[height] [decimal](3, 2) NULL,
+ CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED 
+(
+	[user_email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[assign_plate]  WITH CHECK ADD  CONSTRAINT [FK_assign_plate_plates] FOREIGN KEY([plate_name])
+REFERENCES [dbo].[plates] ([plate_name])
+GO
+ALTER TABLE [dbo].[assign_plate] CHECK CONSTRAINT [FK_assign_plate_plates]
+GO
+ALTER TABLE [dbo].[assign_plate]  WITH CHECK ADD  CONSTRAINT [FK_assign_plate_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[assign_plate] CHECK CONSTRAINT [FK_assign_plate_users]
+GO
+ALTER TABLE [dbo].[assigned_exercise]  WITH CHECK ADD  CONSTRAINT [FK_assigend_exercise_exercise] FOREIGN KEY([exercise_name])
+REFERENCES [dbo].[exercise] ([exercise_name])
+GO
+ALTER TABLE [dbo].[assigned_exercise] CHECK CONSTRAINT [FK_assigend_exercise_exercise]
+GO
+ALTER TABLE [dbo].[assigned_exercise]  WITH CHECK ADD  CONSTRAINT [FK_assigend_exercise_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[assigned_exercise] CHECK CONSTRAINT [FK_assigend_exercise_users]
+GO
+ALTER TABLE [dbo].[ate_plate]  WITH CHECK ADD  CONSTRAINT [FK_ate_plate_plates] FOREIGN KEY([plate_name])
+REFERENCES [dbo].[plates] ([plate_name])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[ate_plate] CHECK CONSTRAINT [FK_ate_plate_plates]
+GO
+ALTER TABLE [dbo].[ate_plate]  WITH CHECK ADD  CONSTRAINT [FK_ate_plate_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[ate_plate] CHECK CONSTRAINT [FK_ate_plate_users]
+GO
+ALTER TABLE [dbo].[did_exercise]  WITH CHECK ADD  CONSTRAINT [FK_did_exercise_exercise] FOREIGN KEY([exercise_name])
+REFERENCES [dbo].[exercise] ([exercise_name])
+GO
+ALTER TABLE [dbo].[did_exercise] CHECK CONSTRAINT [FK_did_exercise_exercise]
+GO
+ALTER TABLE [dbo].[did_exercise]  WITH CHECK ADD  CONSTRAINT [FK_did_exercise_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[did_exercise] CHECK CONSTRAINT [FK_did_exercise_users]
+GO
+ALTER TABLE [dbo].[has_problems]  WITH CHECK ADD  CONSTRAINT [FK_has_problems_problems] FOREIGN KEY([problem_name])
+REFERENCES [dbo].[problems] ([name])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[has_problems] CHECK CONSTRAINT [FK_has_problems_problems]
+GO
+ALTER TABLE [dbo].[has_problems]  WITH CHECK ADD  CONSTRAINT [FK_has_problems_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[has_problems] CHECK CONSTRAINT [FK_has_problems_users]
+GO
+ALTER TABLE [dbo].[notification]  WITH CHECK ADD  CONSTRAINT [FK_notification_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[notification] CHECK CONSTRAINT [FK_notification_users]
+GO
+ALTER TABLE [dbo].[nut_achievement]  WITH CHECK ADD  CONSTRAINT [FK_nut_achievement_coach_or_nut] FOREIGN KEY([coach_email])
+REFERENCES [dbo].[coach_or_nut] ([coach_email])
+GO
+ALTER TABLE [dbo].[nut_achievement] CHECK CONSTRAINT [FK_nut_achievement_coach_or_nut]
+GO
+ALTER TABLE [dbo].[payment]  WITH CHECK ADD  CONSTRAINT [FK_payment_users] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[payment] CHECK CONSTRAINT [FK_payment_users]
+GO
+ALTER TABLE [dbo].[payment]  WITH CHECK ADD  CONSTRAINT [FK_payment_users1] FOREIGN KEY([user_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[payment] CHECK CONSTRAINT [FK_payment_users1]
+GO
+ALTER TABLE [dbo].[reports]  WITH CHECK ADD  CONSTRAINT [FK_reports_coach_or_nut] FOREIGN KEY([coach_email])
+REFERENCES [dbo].[coach_or_nut] ([coach_email])
+GO
+ALTER TABLE [dbo].[reports] CHECK CONSTRAINT [FK_reports_coach_or_nut]
+GO
+ALTER TABLE [dbo].[reports]  WITH CHECK ADD  CONSTRAINT [FK_reports_users] FOREIGN KEY([coach_email])
+REFERENCES [dbo].[users] ([user_email])
+GO
+ALTER TABLE [dbo].[reports] CHECK CONSTRAINT [FK_reports_users]
+GO
