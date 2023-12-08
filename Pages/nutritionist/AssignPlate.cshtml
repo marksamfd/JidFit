@@ -1,0 +1,171 @@
+﻿@page
+@model JidFit.Pages.nutritionist.AssignMealModel
+@{
+}
+<style>
+	.food-check {
+		display: none;
+	}
+
+	.card-img-top {
+		width: 15rem !important;
+	}
+
+	input:checked + label {
+		background-color: var(--bs-success) !important;
+		color: aliceblue;
+	}
+
+	#dishContainers {
+		height: 60vh;
+		overflow-y: scroll;
+	}
+
+		#dishContainers::-webkit-scrollbar {
+			height: 10px;
+			width: 10px;
+		}
+
+		#dishContainers::-webkit-scrollbar-track {
+			border-radius: 5px;
+			background-color: #DFE9EB;
+		}
+
+			#dishContainers::-webkit-scrollbar-track:hover {
+				background-color: #B8C0C2;
+			}
+
+			#dishContainers::-webkit-scrollbar-track:active {
+				background-color: #B8C0C2;
+			}
+
+		#dishContainers::-webkit-scrollbar-thumb {
+			border-radius: 5px;
+			background-color: #397524;
+		}
+
+			#dishContainers::-webkit-scrollbar-thumb:hover {
+				background-color: #62A34B;
+			}
+
+			#dishContainers::-webkit-scrollbar-thumb:active {
+				background-color: #62A34B;
+			}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+</style>
+
+
+
+<div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col">
+			<h1>Assign a Plate to John Doe!</h1>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col">
+			<form>
+				<div class="accordion">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								01. Plate Properties
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show">
+							<div class="accordion-body">
+								<div class="row mb-3">
+									<div class="col">
+										<select class="form-select" aria-label="Default select example">
+											<option selected disabled>Select the meal</option>
+											<option value="0">Breakfast</option>
+											<option value="1">Snack after breakfast</option>
+											<option value="2">Launch</option>
+											<option value="3">Snack after Launch</option>
+											<option value="4">Dinner</option>
+										</select>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col">
+										<input class="form-control" type="number" placeholder="Enter serving size" />
+									</div>
+									<div class="col-3">
+										<select class="form-select">
+											<option value="1">gm</option>
+											<option value="1">lb</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+								02. Select the plate
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse show">
+							<div class="accordion-body">
+								<div class="row">
+									<div class="col">
+										<div class="input-group mb-3">
+											<input type="text" class="form-control" placeholder="Plate's name" aria-label="Plate's username" aria-describedby="button-addon2">
+											<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col">
+										<div class="d-flex justify-content-around p-0 flex-wrap" id="dishContainers">
+											@{
+												for (int i = 0; i <= 14; i++)
+												{
+													<div>
+														<input name="plan" type="radio" class="food-check" id="_@i" />
+														<label class="card mb-2" for="_@i" style="width:fit-content">
+															<img class="card-img-top"
+																 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+															<div class="card-body">
+																<h5 class="card-title">Mlukia</h5>
+																<p class="card-text">25 gm </p>
+															</div>
+															<ul class="list-group list-group-flush">
+																<li class="list-group-item d-flex justify-content-between align-items-center">
+																	Calories
+																	<span class="badge bg-primary rounded-pill">14</span>
+																</li>
+																<li class="list-group-item d-flex justify-content-between align-items-center">
+																	Protien
+																	<span class="badge bg-primary rounded-pill">14</span>
+																</li>
+																<li class="list-group-item d-flex justify-content-between align-items-center">
+																	Carbohydrates
+																	<span class="badge bg-primary rounded-pill">14</span>
+																</li>
+															</ul>
+														</label>
+
+													</div>
+												}
+											}
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
