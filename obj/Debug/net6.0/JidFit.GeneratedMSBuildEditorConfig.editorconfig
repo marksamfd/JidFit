@@ -32,6 +32,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XEFzc2lnblBsYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Study/CSAI 202/JidFit/Pages/nutritionist/ViewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XFZpZXdVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/CSAI 202/JidFit/Pages/nutritionist/ViewUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XFZpZXdVc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Study/CSAI 202/JidFit/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
