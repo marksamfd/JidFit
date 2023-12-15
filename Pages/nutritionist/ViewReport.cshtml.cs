@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace JidFit.Pages
+namespace JidFit.Pages.nutritionist
 {
-    public class ddModel : PageModel
+    public class ViewReportModel : PageModel
     {
         public void OnGet()
         {

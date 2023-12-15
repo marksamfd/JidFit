@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hmsvLNZpXgGNjq0T7rOeHqo+11pAWkEXIopcIXZHXyoVtxr/Lax7kH1wRiETEMFpXisvenMlAXjHJTYzBiF9EQ==",
+  "dgSpecHash": "/4GwMFqnWqGwHZmsEET8h6Vl2o/zMV/fXuzybWuU+/ZFVVvx74fsTyrK4ZzK3+RR43OrsUVKWv6y7lgrCJ3Dfg==",
   "success": true,
   "projectFilePath": "D:\\Study\\CSAI 202\\JidFit\\JidFit.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mark Samuel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

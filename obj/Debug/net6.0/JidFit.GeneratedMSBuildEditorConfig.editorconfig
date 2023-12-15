@@ -16,10 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Study\CSAI 202\JidFit
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Study/CSAI 202/JidFit/Pages/dd.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZGQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Study/CSAI 202/JidFit/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,6 +26,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Study/CSAI 202/JidFit/Pages/nutritionist/AssignPlate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XEFzc2lnblBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/CSAI 202/JidFit/Pages/nutritionist/DeletePlate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XERlbGV0ZVBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/CSAI 202/JidFit/Pages/nutritionist/EditPlate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XEVkaXRQbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/CSAI 202/JidFit/Pages/nutritionist/ViewReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbnV0cml0aW9uaXN0XFZpZXdSZXBvcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Study/CSAI 202/JidFit/Pages/nutritionist/ViewUser.cshtml]

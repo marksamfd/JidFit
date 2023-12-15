@@ -2,6 +2,13 @@
 @model JidFit.Pages.nutritionist.ViewUserModel
 @{
 }
+<style>
+	#diseaseContainer{
+		height: 20vh;
+		overflow-y: scroll;
+	
+	}
+</style>
 
 <div class="container">
 	<div class="row">
@@ -23,140 +30,483 @@
 							<i class="fa-solid fa-ruler-vertical me-2"></i> 120 cm
 						</li>
 					</ul>
+
+					<h3>Diseases</h3>
+					<ul class="list-group" id="diseaseContainer">
+						<li class="list-group-item">
+							Lactose Intolerance
+						</li>
+						<li class="list-group-item">
+							Arrythmia
+						</li>
+						<li class="list-group-item">
+							Hypothyroidism
+						</li>
+						<li class="list-group-item">
+							Anemia
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="col">
-			<div class="accordion" id="accordionFlushExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-							Breakfast (1250 Cal)
-						</button>
-					</h2>
-					<div id="flush-collapseOne" class="accordion-collapse collapse show">
-						<div class="accordion-body d-flex">
-							<div class="card mb-2 me-2" style="width:fit-content">
-								<img class="card-img-top mealImg"
-									 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG"  />
-								<div class="card-body">
-									<div class="row">
-										<div class="col">
-											<h5 class="card-title">Mlukia</h5>
-											<p class="card-text">25 gm </p>
+			<div class="row mb-2">
+				<div class="col">
+					<h1>Assigned Meals</h1>
+					<select class="form-select">
+						<option value="0">Sunday</option>
+						<option value="1">Monday</option>
+						<option value="2">Tuesday</option>
+						<option value="3">Wednesday</option>
+						<option value="4">Thursday</option>
+						<option value="5">Friday</option>
+						<option value="6">Saturday</option>
+
+					</select>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col">
+					<div class="accordion" id="accordionFlushExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+									Breakfast (1250 Cal)
+								</button>
+							</h2>
+							<div id="flush-collapseOne" class="accordion-collapse collapse show">
+								<div class="accordion-body d-flex">
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
 										</div>
-										<div class="col-4 d-flex align-items-center justify-content-center">
-											<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-												250 Cal
-											</span>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="/nutritionist/DeletePlate" class="btn btn-danger">Delete</a>
+											</div>
 										</div>
 									</div>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Calories
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Protien
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Carbohydrates
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-								</ul>
-								<div class="card-body">
-									<div class="btn-group w-100">
-										<a href="#" class="btn btn-primary">Edit</a>
-										<a href="#" class="btn btn-danger">Delete</a>
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
 									</div>
+									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+
+										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
+											<i class="fa-solid fa-plus fa-2xl mb-3">
+
+											</i>
+											<p>Add A Meal To Breakfast</p>
+
+										</div>
+									</a>
 								</div>
 							</div>
-							<div class="card mb-2 me-2" style="width:fit-content">
-								<img class="card-img-top mealImg"
-									 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG"  />
-								<div class="card-body">
-									<div class="row">
-										<div class="col">
-											<h5 class="card-title">Mlukia</h5>
-											<p class="card-text">25 gm </p>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSnackBreak" aria-expanded="false" aria-controls="flush-collapseSnackBreak">
+									Snack after breakfast
+								</button>
+							</h2>
+							<div id="flush-collapseSnackBreak" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body d-flex">
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
 										</div>
-										<div class="col-4 d-flex align-items-center justify-content-center">
-											<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-												250 Cal
-											</span>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
 										</div>
 									</div>
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
+									</div>
+									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+
+										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
+											<i class="fa-solid fa-plus fa-2xl mb-3">
+
+											</i>
+											<p>Add A Meal</p>
+
+										</div>
+									</a>
 								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Calories
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Protien
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										Carbohydrates
-										<span class="badge bg-primary rounded-pill">14</span>
-									</li>
-								</ul>
-								<div class="card-body">
-									<div class="btn-group w-100">
-										<a href="#" class="btn btn-primary">Edit</a>
-										<a href="#" class="btn btn-danger">Delete</a>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseLaunch" aria-expanded="false" aria-controls="flush-collapseLaunch">
+									Launch
+								</button>
+							</h2>
+							<div id="flush-collapseLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body d-flex">
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
 									</div>
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
+									</div>
+									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+
+										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
+											<i class="fa-solid fa-plus fa-2xl mb-3">
+
+											</i>
+											<p>Add A Meal</p>
+
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSnackLaunch" aria-expanded="false" aria-controls="flush-collapseSnackLaunch">
+									Snack after launch
+								</button>
+							</h2>
+							<div id="flush-collapseSnackLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseDinner" aria-expanded="false" aria-controls="flush-collapseDinner">
+									Dinner
+								</button>
+							</h2>
+							<div id="flush-collapseDinner" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+								<div class="accordion-body d-flex">
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
+									</div>
+									<div class="card mb-2 me-2" style="width:fit-content">
+										<img class="card-img-top mealImg"
+											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+										<div class="card-body">
+											<div class="row">
+												<div class="col">
+													<h5 class="card-title">Mlukia</h5>
+													<p class="card-text">25 gm </p>
+												</div>
+												<div class="col-4 d-flex align-items-center justify-content-center">
+													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+														250 Cal
+													</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Calories
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Protien
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+											<li class="list-group-item d-flex justify-content-between align-items-center">
+												Carbohydrates
+												<span class="badge bg-primary rounded-pill">14</span>
+											</li>
+										</ul>
+										<div class="card-body">
+											<div class="btn-group w-100">
+												<a href="#" class="btn btn-primary">Edit</a>
+												<a href="#" class="btn btn-danger">Delete</a>
+											</div>
+										</div>
+									</div>
+									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+
+										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
+											<i class="fa-solid fa-plus fa-2xl mb-3">
+
+											</i>
+											<p>Add A Meal</p>
+
+										</div>
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSnackBreak" aria-expanded="false" aria-controls="flush-collapseSnackBreak">
-							Snack after breakfast
-						</button>
-					</h2>
-					<div id="flush-collapseSnackBreak" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-						<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseLaunch" aria-expanded="false" aria-controls="flush-collapseLaunch">
-							Launch
-						</button>
-					</h2>
-					<div id="flush-collapseLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-						<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSnackLaunch" aria-expanded="false" aria-controls="flush-collapseSnackLaunch">
-							Snack after launch
-						</button>
-					</h2>
-					<div id="flush-collapseSnackLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-						<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseDinner" aria-expanded="false" aria-controls="flush-collapseDinner">
-							Dinner
-						</button>
-					</h2>
-					<div id="flush-collapseDinner" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-						<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-					</div>
+			</div>
+			<div class="row mb-2">
+				<h1>User Statistics</h1>
+				<div>
+					<canvas id="eatingTrend"></canvas>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
+
+<script type="module" defer>
+	document.addEventListener('DOMContentLoaded', (event) => {
+
+		var ctx = document.getElementById('eatingTrend');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ('@Model.chartLabels').split(","),
+				datasets: [{
+					label: 'Users\' Calories',
+					data: ('@Model.userData').split(","),
+					backgroundColor: [
+						'rgba(0, 128, 0, 0.2)',
+					],
+					borderColor: [
+						'green',
+					],
+					borderWidth: 1,
+
+				},
+				{
+					label: 'Plans\' Calories',
+					data: ('@Model.plansData').split(","),
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+					],
+					borderWidth: 1
+				}]
+			}
+		} );
+	});
+</script>
 
 <style>
 	.mealImg {
