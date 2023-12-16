@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+table, th, td {
+ border: 1px solid black;
+ padding: 5px;
+}
+
+th {text-align: left;}
+</style>
+</head>
+<body>
+
+<h2>Meal Plate Page</h2>
+
+<table>
+ <tr>
+    <th>Meal</th>
+    <th>Calories</th>
+    <th>Carbs</th>
+    <th>Protein</th>
+    <th>Fats</th>
+    <th>Amount Ate (g)</th>
+ </tr>
+ <tr>
+    <td>Breakfast</td>
+    <td>100</td>
+    <td>10</td>
+    <td>5</td>
+    <td>2</td>
+    <td><input type="number" min="0"></td>
+ </tr>
+ <tr>
+    <td>Lunch</td>
+    <td>200</td>
+    <td>20</td>
+    <td>10</td>
+    <td>5</td>
+    <td><input type="number" min="0"></td>
+ </tr>
+ <tr>
+    <td>Dinner</td>
+    <td>300</td>
+    <td>30</td>
+    <td>15</td>
+    <td>10</td>
+    <td><input type="number" min="0"></td>
+ </tr>
+</table>
+
+<br>
+
+<table>
+ <tr>
+    <th>Total Calories</th>
+    <th>Total Carbs</th>
+    <th>Total Protein</th>
+    <th>Total Fats</th>
+ </tr>
+ <tr>
+    <td id="totalCalories">0</td>
+    <td id="totalCarbs">0</td>
+    <td id="totalProtein">0</td>
+    <td id="totalFats">0</td>
+ </tr>
+</table>
+
+<script>
+// Update the total calories, carbs, protein, and fats
+let inputElements = document.querySelectorAll('input[type="number"]');
+let totalCalories = document.getElementById('totalCalories');
+let totalCarbs = document.getElementById('totalCarbs');
+let totalProtein = document.getElementById('totalProtein');
+let totalFats = document.getElementById('totalFats');
+
+inputElements.forEach(input => {
+ input.addEventListener('input', () => {
+    let total = 0;
+    let totalCarb = 0;
+    let totalProtein = 0;
+    let totalFat = 0;
+
+    for (let i = 0; i < inputElements.length; i++) {
+      let mealCalories = parseInt(document.querySelectorAll('table tr')[i+1].querySelectorAll('td')[1].textContent);
+      let mealCarbs = parseInt(document.querySelectorAll('table tr')[i+1].querySelectorAll('td')[2].textContent);
+      let mealProtein = parseInt(document.querySelectorAll('table tr')[i+1].querySelectorAll('td')[3].textContent);
+      let mealFat = parseInt(document.querySelectorAll('table tr')[i+1].querySelectorAll('td')[4].textContent);
+      let amountAte = parseInt(inputElements[i].value);
+
+      total += mealCalories * (amountAte / 100);
+      totalCarb += mealCarbs * (amountAte / 100);
+      totalProtein += mealProtein * (amountAte / 100);
+      totalFat += mealFat * (amountAte / 100);
+    }
+
+    totalCalories.textContent = total.toFixed(0);
+    totalCarbs.textContent = totalCarb.toFixed(0);
+    totalProtein.textContent = totalProtein.toFixed(0);
+    totalFats.textContent = totalFat.toFixed(0);
+ });
+});
+</script>
+
+</body>
+</html>
