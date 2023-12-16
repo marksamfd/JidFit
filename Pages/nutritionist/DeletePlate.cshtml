@@ -3,12 +3,13 @@
 @{
 }
 <H1>
-	Are you sure you want to delete John Doe's Mlukia in Breakfast?
+	Are you sure you want to delete @Model.email's @Model.plateName in @Model.meal @Model.day?
 </H1>
 
 <div class="row">
 	<div class="col">
-		<a href="./ViewUsers" class="btn btn-light">No</a>
+		
+		<a href="./ViewUser?email=@Uri.EscapeDataString("marksamfd511@gmail.com")&plate=" class="btn btn-light">No </a>
 	</div>
 	<div class="col">
 		<form>
