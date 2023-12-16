@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ice Cream</title>
+<style> 
+/* ... existing CSS ... */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Ice Cream.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon {
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+</style> 
+</head> 
+<body> 
+
+<div class="icon" id="mealIcon">
+    <h2 class="meal-name">Ice Cream</h2>
+    <p class="meal-description">This is a description of meal 1.</p>
+    <p class="cooking-instructions">These are the instructions for cooking meal 1.</p>
+
+    <form onsubmit="submitForm(event);">
+        <div class="form-group">
+            <label for="grams">How many grams did you eat?</label>
+            <input type="number" id="grams" name="grams" min="0" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    let regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    let results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+let meal = getParameterByName('meal');
+
+function submitForm(event) {
+    event.preventDefault();
+
+    let grams = document.getElementById('grams').value;
+    eatMeal(meal, grams);
+
+    // Hide the meal icon after submission
+    document.getElementById('mealIcon').style.display = 'none';
+
+    // Navigate back to the plate page
+    window.location.href = 'plates.html';
+}
+
+eatMeal(meal);
+</script>
+</body> 
+</html>

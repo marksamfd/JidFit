@@ -1,0 +1,30 @@
+﻿@page
+@model JidFit.Pages.nutritionist.ViewUsersModel
+@{
+}
+<div class="container">
+
+	<div class="row">
+		<div class="col">
+			<div class="d-flex justify-content-around p-0 flex-wrap" id="userContainers">
+				@{
+					for (int i = 0; i <= 14; i++)
+					{
+						<div class="card mb-2" style="width: 18rem;">
+							<img src="https://thispersondoesnotexist.com/" class="card-img-top" alt="...">
+							<div class="card-body p-0">
+							<div class="p-3">
+								<h5 class="card-title">John Doe</h5>
+							</div>
+								<a href="ViewUser" class="btn btn-primary w-100 rounded-0 rounded-bottom">View Patient</a>
+							</div>
+						</div>
+					}
+				}
+			</div>
+
+		</div>
+	</div>
+
+
+</div>
