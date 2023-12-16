@@ -22,8 +22,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29hY2hcQXNzaWduRXhlcmNpc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Laurence/OneDrive/Documents/GitHub/JidFit/Pages/coach/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29hY2hcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Laurence/OneDrive/Documents/GitHub/JidFit/Pages/coach/Describtion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29hY2hcRGVzY3JpYnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurence/OneDrive/Documents/GitHub/JidFit/Pages/coach/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29hY2hcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Laurence/OneDrive/Documents/GitHub/JidFit/Pages/coach/MyTrainees.cshtml]
