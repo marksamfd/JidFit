@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    .content-container {
+      display: none;
+    }
+    
+    #exercise-content,
+    #plate-content {
+      display: block;
+    }
+    
+    .button-container button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #f1f1f1;
+      transition: background-color 0.3s ease;
+    }
+    
+    .button-container button:hover {
+      background-color: #ddd;
+    }
+    
+    .user-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f8f8f8;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    .user-image img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .user-info {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .user-info h2 {
+      margin-bottom: 10px;
+    }
+    
+    .user-info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="user-profile">
+    <h1>User Profile</h1>
+    <div class="user-image">
+      <img src="user_image.png" alt="User Image">
+    </div>
+    <div class="user-info">
+      <h2>User Name</h2>
+      <p>Email: user@example.com</p>
+      <p>Age: 30</p>
+      <p>Height: 170 cm</p>
+      <p>Weight: 70 kg</p>
+      <p>Location: New York, USA</p>
+    </div>
+  </div>
+  <div class="button-container">
+    <button onclick="showContent('exercise-content')">Exercise</button>
+    <button onclick="showContent('plate-content')">Plate</button>
+  </div>
+  
+  <!-- Exercise Content -->
+  <div id="exercise-content" class="content-container">
+    <h2>Exercise Page</h2>
+    <div id="exercise-page"></div>
+  </div>
+  
+  <!-- Plate Content -->
+  <div id="plate-content" class="content-container">
+    <h2>Plate Page</h2>
+    <div id="plate-page"></div>
+  </div>
+  
+  <script>
+    function showContent(contentId) {
+      // Show selected content container
+      var selectedContent = document.getElementById(contentId);
+      if (selectedContent) {
+        selectedContent.style.display = 'block';
+      }
+      
+      // Hide other content containers
+      var contentContainers = document.getElementsByClassName('content-container');
+      for (var i = 0; i < contentContainers.length; i++) {
+        if (contentContainers[i].id !== contentId) {
+          contentContainers[i].style.display = 'none';
+        }
+      }
+    }
+    
+    
+    fetch('exercise-page.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('exercise-page').innerHTML = data;
+      });
+    
+    
+    fetch('plate-page.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('plate-page').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

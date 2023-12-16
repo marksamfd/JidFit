@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakfast Page</title>
+<style> 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('bbackground.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+plate { 
+ display: grid; 
+ grid-template-columns: repeat(4, 1fr); 
+ grid-gap: 20px; 
+ margin: 50px; 
+ background-color: #f0f0f0; 
+} 
+
+.plate .icon { 
+ width: 150px; 
+ height: 150px; 
+ border-radius: 50%; 
+ display: flex; 
+ justify-content: center; 
+ align-items: center; 
+ cursor: pointer; 
+ transition: transform 0.3s; 
+ background-size: cover;
+ object-fit: cover;
+} 
+
+.plate .icon:hover { 
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+ transform: scale(1.1); 
+} 
+
+.plate .icon:hover { 
+ transform: scale(0.8); 
+} 
+
+.icon-b { 
+ background-image: url('Oatmeal.jpeg'); 
+} 
+
+.icon-b1 { 
+ background-image: url('Banana Smoothie.jpeg'); 
+} 
+
+.icon-b2 { 
+ background-image: url('Scrambled Eggs.jpeg'); 
+} 
+
+.icon-b3 { 
+ background-image: url('Avocado Toast.jpeg'); 
+} 
+
+.meal-name { 
+ margin-top: 10px; 
+ text-align: center; 
+} 
+
+.calories { 
+ font-size: 12px; 
+ color: #999; 
+} 
+</style> 
+</head> 
+<body> 
+<div class="plate"> 
+<div class="icon icon-b" onclick="location.href='breakfast-meal.html'">
+    <div class="meal-name">Oatmeal</div>
+    <div class="calories">Calories: 250</div>
+</div> 
+
+<div class="icon icon-b1" onclick="location.href='breakfast-meal1.html'">
+    <div class="meal-name">Banana Smoothie</div>
+    <div class="calories">Calories: 350</div>
+</div> 
+
+<div class="icon icon-b2" onclick="location.href='breakfast-meal2.html'">
+    <div class="meal-name">Scrambled Eggs</div>
+    <div class="calories">Calories: 300</div>
+</div> 
+
+<div class="icon icon-b3" onclick="location.href='breakfast-meal3.html'">
+    <div class="meal-name">Avocado Toast</div>
+    <div class="calories">Calories: 200</div>
+</div> 
+
+</div> 
+</body> 
+</html>
