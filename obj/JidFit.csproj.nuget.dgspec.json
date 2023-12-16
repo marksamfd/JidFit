@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\CSAI 202\\JidFit\\JidFit.csproj": {}
+    "C:\\Users\\Laurence\\OneDrive\\Documents\\GitHub\\JidFit\\JidFit.csproj": {}
   },
   "projects": {
-    "D:\\Study\\CSAI 202\\JidFit\\JidFit.csproj": {
+    "C:\\Users\\Laurence\\OneDrive\\Documents\\GitHub\\JidFit\\JidFit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\CSAI 202\\JidFit\\JidFit.csproj",
+        "projectUniqueName": "C:\\Users\\Laurence\\OneDrive\\Documents\\GitHub\\JidFit\\JidFit.csproj",
         "projectName": "JidFit",
-        "projectPath": "D:\\Study\\CSAI 202\\JidFit\\JidFit.csproj",
-        "packagesPath": "C:\\Users\\Mark Samuel\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\CSAI 202\\JidFit\\obj\\",
+        "projectPath": "C:\\Users\\Laurence\\OneDrive\\Documents\\GitHub\\JidFit\\JidFit.csproj",
+        "packagesPath": "C:\\Users\\Laurence\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Laurence\\OneDrive\\Documents\\GitHub\\JidFit\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Mark Samuel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Laurence\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

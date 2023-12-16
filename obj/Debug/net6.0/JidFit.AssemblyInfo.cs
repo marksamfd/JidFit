@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JidFit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11ed10d28d102ef674636407857457754de64faf")]
 [assembly: System.Reflection.AssemblyProductAttribute("JidFit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JidFit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
