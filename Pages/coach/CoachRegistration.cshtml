@@ -1,0 +1,14 @@
+﻿@page
+@model JidFit.Pages.coach.CoachRegistrationModel
+@{
+}
+<div class="text-center">
+    <form method="post">
+        <input class="form-control" asp-for="email" type="email" placeholder="Email" /><br>
+        <input class="form-control" asp-for="name" type="text" placeholder="Name" /><br>
+        <input class="form-control" asp-for="pass" type="text" placeholder="Password" /><br>
+        <input class="form-control" asp-for="role" type="text" placeholder="Your Role (Coach / Nutritionist / User)" /><br>
+        <button class="btn btn-success">Submit</button>
+    </form>
+</div>
+

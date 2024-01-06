@@ -10,7 +10,7 @@ namespace JidFit.Models
         protected SqlConnection con;
         public BaseConnection()
         {
-            ConString = "Data Source=MARK-PC\\SQLEXPRESS;Initial Catalog=jidfit;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            ConString = "Data Source=DESKTOP-TDPGBSC\\MSSQLSERVER2;Initial Catalog=JidFit;Integrated Security=True";
             con = new SqlConnection(ConString);
             // use conn in the other files
         }
