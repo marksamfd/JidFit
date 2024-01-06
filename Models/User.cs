@@ -70,8 +70,28 @@ namespace JidFit.Models
 			}
 			return dt;
 		}
+        public DataTable getexercise(string user)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM assigned_exercise ap left join exercise p on p.exersice_name = ap.exersice_name WHERE user_email = @user ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add("user", SqlDbType.VarChar).Value = user;
+            try
+            {
+                con.Open();
+                dt.Load(cmd.ExecuteReader());
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return dt;
+        }
 
-		
-	}
+    }
 
 }
