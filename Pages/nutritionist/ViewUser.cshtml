@@ -1,12 +1,59 @@
 ﻿@page
 @model JidFit.Pages.nutritionist.ViewUserModel
 @{
+	void renderMeals(int meal)
+	{
+		for (int i = 0; i < Model.plates.Rows.Count; i++)
+		{
+			if ((int)Model.plates.Rows[i][2] == meal)
+			{
+				<div class="card mb-2 me-2" style="width:fit-content">
+					<img class="card-img-top mealImg"
+						 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
+					<div class="card-body">
+						<div class="row">
+							<div class="col">
+								<h5 class="card-title">@Model.plates.Rows[i][0]</h5>
+								<p class="card-text">@Model.plates.Rows[i][4] gm </p>
+							</div>
+							<div class="col-4 d-flex align-items-center justify-content-center">
+								<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
+
+									@((int)@Model.plates.Rows[i][4] * (int)@Model.plates.Rows[i][11]) Cal
+								</span>
+							</div>
+						</div>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Calories
+							<span class="badge bg-primary rounded-pill">@Model.plates.Rows[i][11]</span>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Protien
+							<span class="badge bg-primary rounded-pill">@Model.plates.Rows[i][9]</span>
+						</li>
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							Carbohydrates
+							<span class="badge bg-primary rounded-pill">@Model.plates.Rows[i][10]</span>
+						</li>
+					</ul>
+					<div class="card-body">
+						<div class="btn-group w-100">
+							<a href="/nutritionist/DeletePlate" class="btn btn-danger">Delete</a>
+						</div>
+					</div>
+				</div>
+
+			}
+		}
+
+	}
 }
 <style>
-	#diseaseContainer{
+	#diseaseContainer {
 		height: 20vh;
 		overflow-y: scroll;
-	
 	}
 </style>
 
@@ -18,33 +65,29 @@
 			</div>
 			<div class="row">
 				<div class="col text-center ">
-					<h4>John Doe</h4>
+					<h4>@Model.dt.Rows[0][3]</h4>
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item d-flex align-items-center justify-content-start">
 							<i class="fa-regular fa-calendar-days me-2"></i> 18 Years
 						</li>
 						<li class="list-group-item  d-flex align-items-center justify-content-start">
-							<i class="fa-solid fa-weight-scale me-2"></i> 80 Kg
+							<i class="fa-solid fa-weight-scale me-2"></i> @Model.dt.Rows[0][1] Kg
 						</li>
 						<li class="list-group-item  d-flex align-items-center justify-content-start">
-							<i class="fa-solid fa-ruler-vertical me-2"></i> 120 cm
+							<i class="fa-solid fa-ruler-vertical me-2"></i> @Model.dt.Rows[0][7] cm
 						</li>
 					</ul>
 
 					<h3>Diseases</h3>
 					<ul class="list-group" id="diseaseContainer">
-						<li class="list-group-item">
-							Lactose Intolerance
-						</li>
-						<li class="list-group-item">
-							Arrythmia
-						</li>
-						<li class="list-group-item">
-							Hypothyroidism
-						</li>
-						<li class="list-group-item">
-							Anemia
-						</li>
+						@{
+							for (int i = 0; i < Model.prob.Rows.Count; i++)
+							{
+								<li class="list-group-item">
+									@Model.prob.Rows[i][0]
+								</li>
+							}
+						}
 					</ul>
 				</div>
 			</div>
@@ -53,16 +96,26 @@
 			<div class="row mb-2">
 				<div class="col">
 					<h1>Assigned Meals</h1>
-					<select class="form-select">
-						<option value="0">Sunday</option>
-						<option value="1">Monday</option>
-						<option value="2">Tuesday</option>
-						<option value="3">Wednesday</option>
-						<option value="4">Thursday</option>
-						<option value="5">Friday</option>
-						<option value="6">Saturday</option>
+					<form class="row" method="post">
+						<div class="col-11">
 
-					</select>
+							<select class="form-select">
+								<option value="0">Sunday</option>
+								<option value="1">Monday</option>
+								<option value="2">Tuesday</option>
+								<option value="3">Wednesday</option>
+								<option value="4">Thursday</option>
+								<option value="5">Friday</option>
+								<option value="6">Saturday</option>
+
+							</select>
+						</div>
+						<div class="col-1">
+
+							<input type="submit" class="btn btn-primary" />
+						</div>
+					</form>
+
 				</div>
 			</div>
 			<div class="row mb-2">
@@ -76,81 +129,10 @@
 							</h2>
 							<div id="flush-collapseOne" class="accordion-collapse collapse show">
 								<div class="accordion-body d-flex">
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="/nutritionist/DeletePlate" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+									@{
+										renderMeals(0);
+									}
+									<a href="/nutritionist/AssignPlate?admin=@Model.admin&user=@Model.user&meal=0" class="btn card mb-2 me-2">
 
 										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
 											<i class="fa-solid fa-plus fa-2xl mb-3">
@@ -171,81 +153,10 @@
 							</h2>
 							<div id="flush-collapseSnackBreak" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body d-flex">
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+									@{
+										renderMeals(1);
+									}
+									<a href="/nutritionist/AssignPlate?admin=@Model.admin&user=@Model.user&meal=1" class="btn card mb-2 me-2">
 
 										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
 											<i class="fa-solid fa-plus fa-2xl mb-3">
@@ -266,81 +177,10 @@
 							</h2>
 							<div id="flush-collapseLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body d-flex">
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+									@{
+										renderMeals(2);
+									}
+									<a href="/nutritionist/AssignPlate?admin=@Model.admin&user=@Model.user&meal=2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  " class="btn card mb-2 me-2">
 
 										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
 											<i class="fa-solid fa-plus fa-2xl mb-3">
@@ -360,7 +200,21 @@
 								</button>
 							</h2>
 							<div id="flush-collapseSnackLaunch" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-								<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+								<div class="accordion-body d-flex">
+									@{
+										renderMeals(3);
+									}
+									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+
+										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
+											<i class="fa-solid fa-plus fa-2xl mb-3">
+
+											</i>
+											<p>Add A Meal</p>
+
+										</div>
+									</a>
+								</div>
 							</div>
 						</div>
 						<div class="accordion-item">
@@ -371,81 +225,10 @@
 							</h2>
 							<div id="flush-collapseDinner" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
 								<div class="accordion-body d-flex">
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<div class="card mb-2 me-2" style="width:fit-content">
-										<img class="card-img-top mealImg"
-											 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Molokheya_Egypt%2C_2012.JPG/330px-Molokheya_Egypt%2C_2012.JPG" />
-										<div class="card-body">
-											<div class="row">
-												<div class="col">
-													<h5 class="card-title">Mlukia</h5>
-													<p class="card-text">25 gm </p>
-												</div>
-												<div class="col-4 d-flex align-items-center justify-content-center">
-													<span class="text-white rounded-3 bg-primary pt-1 pb-1 ps-2 pe-2">
-														250 Cal
-													</span>
-												</div>
-											</div>
-										</div>
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Calories
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Protien
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-											<li class="list-group-item d-flex justify-content-between align-items-center">
-												Carbohydrates
-												<span class="badge bg-primary rounded-pill">14</span>
-											</li>
-										</ul>
-										<div class="card-body">
-											<div class="btn-group w-100">
-												<a href="#" class="btn btn-primary">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</a>
-											</div>
-										</div>
-									</div>
-									<a href="/nutritionist/AssignPlate" class="btn card mb-2 me-2">
+									@{
+										renderMeals(4);
+									}
+									<a href="/nutritionist/AssignPlate?admin=@Model.admin&user=@Model.user" class="btn card mb-2 me-2">
 
 										<div class="card-body d-flex align-items-center flex-column justify-content-center mealImg">
 											<i class="fa-solid fa-plus fa-2xl mb-3">
@@ -504,7 +287,7 @@
 					borderWidth: 1
 				}]
 			}
-		} );
+		});
 	});
 </script>
 

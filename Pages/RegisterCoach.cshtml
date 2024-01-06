@@ -1,0 +1,21 @@
+﻿@page
+@model JidFit.Pages.RegisterCoachModel
+@{
+}
+<form method="post">
+	Name:
+	<input id="name" asp-for="@Model.m.name" />
+	<br />
+	Email:
+	<input type="email" asp-for="@Model.m.email" />
+	<br />
+	Password:
+	<input type="text" asp-for="@Model.m.password" />
+	<br />
+	Type:
+	<select asp-for="@Model.m.role">
+		<option value="0">Coach</option>
+		<option value="1">Nutritionist</option>
+	</select>
+	<input type="submit"/>
+</form>

@@ -1,7 +1,12 @@
+using JidFit.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<CoachNutritionist>();
+builder.Services.AddSingleton<Payment>();
+builder.Services.AddSingleton<User>();
 
 var app = builder.Build();
 
