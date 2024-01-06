@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 namespace JidFit.Models
 {
-    public class coachNutritionist : BaseConnection
+	[BindProperties(SupportsGet = true)]
+	public class CoachNutritionist : BaseConnection
     {
         public enum UType
         {
@@ -15,14 +17,14 @@ namespace JidFit.Models
         public string email { get; set; }
         public string password { get; set; }
 
-        public coachNutritionist()
+        public CoachNutritionist()
         {
             email = "";
             name = "";
             password = "";
 
         }
-        public coachNutritionist(string email, string name, string password, UType role)
+        public CoachNutritionist(string email, string name, string password, UType role)
         {
             this.email = email;
             this.name = name;
@@ -37,19 +39,57 @@ namespace JidFit.Models
             dt.Load(cmd.ExecuteReader());
             return dt;
         }
-        public void insertCoachOrNutritionist()
+        public void insertCoachOrNutritionist(coachNutritionistModal m)
         {
-            string query = "INSERT INTO coach_or_nut (coach_email, coach_name, password, role) VALUES ('@email', '@name', '@password', '@role')";
+            string query = "INSERT INTO coach_or_nut (coach_email, coach_name, password, role) VALUES (@email, @name, @password, @role)";
             SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@role", role);
-            cmd.Parameters.AddWithValue("@password", password);
-            cmd.Parameters.AddWithValue("@email", email);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+			cmd.Parameters.Add("name", SqlDbType.VarChar).Value = m.name;
+			cmd.Parameters.Add("role", SqlDbType.Char).Value = m.role;
+			cmd.Parameters.Add("password", SqlDbType.VarChar).Value = m.password;
+			cmd.Parameters.Add("email", SqlDbType.VarChar).Value = m.email;
+
+            try
+            {
+				con.Open();
+				cmd.ExecuteNonQuery();
+			}
+			catch (SqlException e)
+            {
+				Console.WriteLine(e.Message);
+			}
+			finally
+            {
+				con.Close();
+			}
         }
 
+        public bool login(string email, string pass)
+        {
+            string query = "SELECT password FROM coach_or_nut WHERE coach_email = @email";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add("email", SqlDbType.VarChar).Value = email;
+            try
+            {
+				con.Open();
+				SqlDataReader reader = cmd.ExecuteReader();
+				if (reader.Read())
+                {
+					if (reader.GetString(0) == pass)
+                    {
+						return true;
+					}
+				}
+			}
+			catch (SqlException e)
+            {
+				Console.WriteLine(e.Message);
+			}
+			finally
+            {
+				con.Close();
+			}
+            return false;
+        }
         
     }
 }
